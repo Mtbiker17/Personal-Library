@@ -1,3 +1,26 @@
 html {
-    background-color: blue;
+    background-color:blanchedalmond;
+}
+
+#header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+#shelfImg{
+    font-size: 300%
+}
+#pageTitle {
+    font-size: 300%;
+    font-family: 'Vollkorn', sans-serif;
+}
+
+#toolbar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color:#d2d2d2;
+    font-family: 'Vollkorn', sans-serif;
 }
