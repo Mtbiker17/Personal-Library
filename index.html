@@ -3,6 +3,7 @@
     <head>
         <meta charset = "UTF-8">
         <title>Personal Library</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel = "stylesheet" href="style.css">
     </head>
     <body>
@@ -13,24 +14,47 @@
             </div>
             <p id = "subTitle">A Virtual Bookshelf Organizing Tool</p>
             <div id = "toolbarContainer">
-                    <button id = "addBookButton" title = "Add Book"><img src = "https://img.icons8.com/material-outlined/24/000000/add-book.png"/>
+                    <button id = "addBookButton" title ="Add Book">
+                        <img src = "https://img.icons8.com/material-outlined/24/000000/add-book.png"/>
+                        <div>Add</div>
                     </button>
+                    <div id="bookModal" class="modal">
+                        <div class="modalContent">
+                            <span class="close">&times;</span>
+                            <div>Would you reccomend this book?
+                                <select id="recommend">
+                                    <option value="Yes">Yes</option>
+                                    <option value="No">No</option>
+                                </select>    
+                            </div>
+                            <div>How many pages?
+                                <input id="pages" title = "Enter Number of Pages">
+                            </div>
+                        </div>
+                    </div>
                     <div>
                         <div>Book Title</div>
-                        <input>
+                        <input id = "bookTitle" title = "Enter Book Title">
                     </div>
                     <div>
                         <div>Author</div>
-                        <input>
+                        <input id = "bookAuthor" title="Enter Book Author">
                     </div>
                     <div>
                         <label>Have You Read This Book?</label>
                             <select id="read">
-                            <option value="Read">Read</option>
-                            <option value="notRead">Not Read</option>
+                            <option value="Have Read">Have Read</option>
+                            <option value="Have Not Read">Have Not Read</option>
                             </select>
                     </div>
             </div>
+            <div class="book-container">
+                <div class="book">Book here </div>
+                <div class="book">Book here</div>
+                <div class="book">Book here</div>
+                <div class="book">Book here</div>
+            </div>
+        
         </div>
         
 
