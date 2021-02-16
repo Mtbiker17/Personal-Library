@@ -85,12 +85,13 @@ html {
     transform: scale(1);
 }
 
-.book-container{
+#book-container{
     display: grid;
     grid-template-columns: auto auto auto;
     background-color: #0074d9;
     padding: 10px;
     gap: 30px;
+    justify-content: center;
 }
 
 .book{
@@ -102,6 +103,7 @@ html {
     text-align: center;
     border-radius: 15%;
     font-weight: 100;
+    margin: 10px 15px 10px 15px;
 }
 
 .modal{
