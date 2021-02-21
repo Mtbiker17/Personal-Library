@@ -21,20 +21,9 @@ function saveBookInfo() {
   let read = document.getElementById("read").value;
   let pages = document.getElementById("pages").value;
   let recommend = document.getElementById("recommend").value;
-  let newBook = {
-    title: title,
-    author: author,
-    read: read,
-    pages: pages,
-    recommend: recommend
-  }
-  myLibrary.push(newBook);
-  const addBook = new Book(title, author, read, pages, recommend);
+  const addBook = new Book(title, author, pages, read, recommend);
+  myLibrary.push(addBook);
   console.log(myLibrary);
-}
-
-function displayBook() {
-
 }
 
 function Book(title, author, pages, read, recommend) {
@@ -43,13 +32,25 @@ function Book(title, author, pages, read, recommend) {
     this.read = read,
     this.pages = pages,
     this.recommend = recommend
-  this.info = function() {
+  this.displayInfo = function() {
     let newDiv = document.createElement("div");
+    let titleInfo = document.createElement("span");
+    let authorInfo = document.createElement("span");
+    let pagesInfo = document.createElement("span");
+    let recommendInfo = document.createElement("span");
+
     bookContainer.append(newDiv);
     newDiv.classList.add('book');
-    newDiv.textContent = `${title} by ${author}. ${pages} pages, ${read}`;
+    newDiv.appendChild(titleInfo).classList.add('newBook');
+    newDiv.appendChild(authorInfo).classList.add('newBook');
+    newDiv.appendChild(pagesInfo).classList.add('newBook');
+    newDiv.appendChild(recommendInfo).classList.add('newBook');
+    titleInfo.textContent = `Title: ${title}`;
+    authorInfo.textContent = `Author: ${author}`;
+    pagesInfo.textContent = `# of Pages: ${pages}`;
+    recommendInfo.textContent = `Recommend This Book?: ${recommend}`;
   }
-  this.info();
+  this.displayInfo();
 }
 
 span.onclick = function() {
