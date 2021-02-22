@@ -85,6 +85,28 @@ html {
     transform: scale(1);
 }
 
+#removeButton {
+    outline: none;
+    align-items: center;
+    font-family: inherit;
+    padding: 5px;
+    color: black;
+    border: none;
+    border-radius: 40px;
+    font-weight: 300;
+    font-size: 50%;
+    width: 30%;
+    margin: 5px;
+}
+
+#removeButton:hover {
+    transform: scale(1.05);
+}
+
+#removeButton:active{
+    transform: scale(1);
+}
+
 #book-container{
     display: grid;
     grid-template-columns: auto auto auto;
