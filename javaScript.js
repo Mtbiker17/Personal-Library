@@ -15,6 +15,16 @@ function bookInfoCheck() {
   modal.style.display = "block";
 }
 
+function Book(title, author, pages, read, recommend, bookNumber) {
+    this.title = title,
+    this.author = author,
+    this.read = read,
+    this.pages = pages,
+    this.recommend = recommend
+    this.bookNumber = bookNumber;
+    this.displayInfo();
+}
+
 function addBookToLibrary() {
   let title = document.getElementById("bookTitle").value;
   let author = document.getElementById("bookAuthor").value;
@@ -28,43 +38,37 @@ function addBookToLibrary() {
   modal.style.display = "none";
 }
 
-function Book(title, author, pages, read, recommend, bookNumber) {
-    this.title = title,
-    this.author = author,
-    this.read = read,
-    this.pages = pages,
-    this.recommend = recommend
-    this.bookNumber = bookNumber;
-    this.displayInfo();
-}
-
 Book.prototype.displayInfo = function () {
-      let newDiv = document.createElement("div");
-      let titleInfo = document.createElement("span");
-      let authorInfo = document.createElement("span");
-      let pagesInfo = document.createElement("span");
-      let recommendInfo = document.createElement("span");
-      let removeBook = document.createElement("button");
-      removeBook.setAttribute("id", "removeButton");
-      removeBook.dataset.number = this.bookNumber;
-  
-      bookContainer.append(newDiv);
-      newDiv.classList.add('book');
-      newDiv.appendChild(titleInfo).classList.add('newBook');
-      newDiv.appendChild(authorInfo).classList.add('newBook');
-      newDiv.appendChild(pagesInfo).classList.add('newBook');
-      newDiv.appendChild(recommendInfo).classList.add('newBook');
-      newDiv.appendChild(removeBook).classList.add('removeButton');
-      titleInfo.textContent = `Title: ${this.title}`;
-      authorInfo.textContent = `Author: ${this.author}`;
-      pagesInfo.textContent = `# of Pages: ${this.pages}`;
-      recommendInfo.textContent = `Recommend This Book?: ${this.recommend}`;
-      removeBook.textContent = "Remove"
-  }
+  let newDiv = document.createElement("div");
+  let titleInfo = document.createElement("span");
+  let authorInfo = document.createElement("span");
+  let pagesInfo = document.createElement("span");
+  let recommendInfo = document.createElement("span");
+  let removeBook = document.createElement("button");
+  removeBook.setAttribute("class", 'removeButton');
+  removeBook.setAttribute("id", `${this.bookNumber}`);
+  newDiv.setAttribute("id", `${this.bookNumber}`);
 
-//Book.prototype.remove = function (){
-  //myLibrary.splice(this.bookNumber)
-//}
+  console.log(removeBook.id);
+  
+  bookContainer.append(newDiv);
+  newDiv.classList.add('book');
+  newDiv.appendChild(titleInfo).classList.add('newBook');
+  newDiv.appendChild(authorInfo).classList.add('newBook');
+  newDiv.appendChild(pagesInfo).classList.add('newBook');
+  newDiv.appendChild(recommendInfo).classList.add('newBook');
+  newDiv.appendChild(removeBook);
+  titleInfo.textContent = `Title: ${this.title}`;
+  authorInfo.textContent = `Author: ${this.author}`;
+  pagesInfo.textContent = `# of Pages: ${this.pages}`;
+  recommendInfo.textContent = `Recommend This Book?: ${this.recommend}`;
+  removeBook.textContent = "Remove"
+
+  removeBook.addEventListener('click', () => {
+    myLibrary.splice(0, removeBook.id);
+    console.log(removeBook.id);
+  })
+}
 
 span.onclick = function() {
   modal.style.display = "none";
