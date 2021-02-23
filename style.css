@@ -85,7 +85,7 @@ html {
     transform: scale(1);
 }
 
-#removeButton {
+.removeButton {
     outline: none;
     align-items: center;
     font-family: inherit;
@@ -99,11 +99,11 @@ html {
     margin: 5px;
 }
 
-#removeButton:hover {
+.removeButton:hover {
     transform: scale(1.05);
 }
 
-#removeButton:active{
+.removeButton:active{
     transform: scale(1);
 }
 
