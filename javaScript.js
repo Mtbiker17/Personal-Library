@@ -15,27 +15,27 @@ function bookInfoCheck() {
   modal.style.display = "block";
 }
 
+function Book(title, author, pages, read, recommend, id) {
+  this.title = title,
+  this.author = author,
+  this.read = read,
+  this.pages = pages,
+  this.recommend = recommend
+  this.id = id;
+  this.displayInfo();
+}
+
 function addBookToLibrary() {
   let title = document.getElementById("bookTitle").value;
   let author = document.getElementById("bookAuthor").value;
   let read = document.getElementById("read").value;
   let pages = document.getElementById("pages").value;
   let recommend = document.getElementById("recommend").value;
-  let bookNumber = myLibrary.length;
-  const addBook = new Book(title, author, pages, read, recommend, bookNumber);
+  let id = myLibrary.length;
+  const addBook = new Book(title, author, pages, read, recommend, id);
   myLibrary.push(addBook);
   console.log(myLibrary);
   modal.style.display = "none";
-}
-
-function Book(title, author, pages, read, recommend, bookNumber) {
-  this.title = title,
-  this.author = author,
-  this.read = read,
-  this.pages = pages,
-  this.recommend = recommend
-  this.bookNumber = bookNumber;
-  this.displayInfo();
 }
 
 Book.prototype.displayInfo = function () {
@@ -47,26 +47,26 @@ Book.prototype.displayInfo = function () {
   let removeBook = document.createElement("button");
   bookContainer.append(newDiv);
   newDiv.classList.add('book');
-  newDiv.setAttribute("id", `${this.bookNumber}`);
-  
+  newDiv.setAttribute("id", `${this.id}`);
+ 
   newDiv.appendChild(titleInfo).classList.add('newBook');
   newDiv.appendChild(authorInfo).classList.add('newBook');
   newDiv.appendChild(pagesInfo).classList.add('newBook');
   newDiv.appendChild(recommendInfo).classList.add('newBook');
   newDiv.appendChild(removeBook);
   removeBook.setAttribute("class", 'removeButton');
-  removeBook.setAttribute("id", `${this.bookNumber}`);
+  removeBook.setAttribute("id", `${this.id}`);
+  
   titleInfo.textContent = `Title: ${this.title}`;
   authorInfo.textContent = `Author: ${this.author}`;
   pagesInfo.textContent = `# of Pages: ${this.pages}`;
   recommendInfo.textContent = `Recommend This Book?: ${this.recommend}`;
   removeBook.textContent = "Remove"
-  
+
   removeBook.addEventListener('click', () => {
-    let removeId = removeBook.id;
-    let removeDiv = Book.bookNumber;
-    myLibrary = myLibrary.filter(library => removeId !== removeDiv);
-    console.log(myLibrary, removeId, removeDiv);
+    let removeId = parseInt(removeBook.id);
+    myLibrary = myLibrary.filter(books =>  books.id !== removeId);
+    console.log(myLibrary);
   })
 }
 
@@ -76,3 +76,5 @@ span.onclick = function() {
 
 saveBook.addEventListener('click', addBookToLibrary);
 addBookButton.addEventListener('click', bookInfoCheck);
+
+    
