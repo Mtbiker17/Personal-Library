@@ -45,6 +45,7 @@ Book.prototype.displayInfo = function () {
   let pagesInfo = document.createElement("span");
   let recommendInfo = document.createElement("span");
   let removeBook = document.createElement("button");
+  let readStatus = document.createElement("button");
   bookContainer.append(newDiv);
   newDiv.classList.add('book');
   newDiv.setAttribute("id", `${this.id}`);
@@ -54,19 +55,35 @@ Book.prototype.displayInfo = function () {
   newDiv.appendChild(pagesInfo).classList.add('newBook');
   newDiv.appendChild(recommendInfo).classList.add('newBook');
   newDiv.appendChild(removeBook);
+  newDiv.appendChild(readStatus);
+  readStatus.setAttribute("class", 'removeButton');
+  readStatus.setAttribute("id", 'readStatus');
   removeBook.setAttribute("class", 'removeButton');
   removeBook.setAttribute("id", `${this.id}`);
   
-  titleInfo.textContent = `Title: ${this.title}`;
+  titleInfo.textContent = `${this.title}`;
   authorInfo.textContent = `Author: ${this.author}`;
   pagesInfo.textContent = `# of Pages: ${this.pages}`;
-  recommendInfo.textContent = `Recommend This Book?: ${this.recommend}`;
+  recommendInfo.textContent = `Recommend This Book? ${this.recommend}`;
   removeBook.textContent = "Remove"
+  readStatus.textContent = `${this.read}`;
 
   removeBook.addEventListener('click', () => {
     let removeId = parseInt(removeBook.id);
     myLibrary = myLibrary.filter(books =>  books.id !== removeId);
     console.log(myLibrary);
+    let removedElement = document.getElementById(`${this.id}`);
+    removedElement.remove();
+  })
+
+  readStatus.addEventListener('click', () =>{
+    if(this.read === 'Have Not Read'){
+      this.read = 'Have Read';
+      readStatus.textContent = this.read;
+    } else if (this.read === 'Have Read'){
+      this.read = 'Have Not Read';
+      readStatus.textContent = this.read;
+    }
   })
 }
 
