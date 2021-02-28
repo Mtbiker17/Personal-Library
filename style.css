@@ -95,7 +95,7 @@ html {
     border-radius: 40px;
     font-weight: 300;
     font-size: 50%;
-    width: 30%;
+    width: 40%;
     margin: 5px;
 }
 
@@ -130,6 +130,20 @@ html {
     text-align: center;
     border-radius: 15%;
     font-weight: 100;
+}
+
+.bookTitle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: inherit;
+    padding: 10px;
+    color: black;
+    border-radius: 40px;
+    text-shadow: 1px px 5px black;
+    font-weight: 500;
+    font-size: 70%;
+    margin-top: auto;
 }
 
 .newBook{
