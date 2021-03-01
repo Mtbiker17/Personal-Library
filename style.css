@@ -99,6 +99,23 @@ html {
     margin: 5px;
 }
 
+.haveNotRead {
+    display: flex;
+    align-items: left;
+    flex-direction: column;
+    box-shadow: 8px 5px 5px black;
+    border-width: 2px;
+    background: rgb(103,103,103);
+    background: linear-gradient(147deg, #676767fa 39%, #cbc9c9 85%);
+    height: 300px;
+    width: 275px;
+    padding: 20px;
+    font-size: 30px;
+    text-align: center;
+    border-radius: 15%;
+    font-weight: 100;
+}
+
 .removeButton:hover {
     transform: scale(1.05);
 }
