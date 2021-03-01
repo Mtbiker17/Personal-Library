@@ -4,6 +4,18 @@ let span = document.getElementsByClassName("close")[0];
 let saveBook = document.getElementById('saveBookInfo');
 let bookContainer = document.getElementById('book-container');
 let myLibrary = [];
+window.localStorage;
+
+window.onload = function () {
+  localStorage.getItem('library', myLibrary);
+  myLibrary.forEach();
+  console.log(localStorage);
+}
+
+function storeLibrary(){
+  localStorage.setItem('library', myLibrary);
+  console.log(localStorage);
+}
 
 function bookInfoCheck() {
   let bookTitle = document.getElementById("bookTitle").value;
@@ -56,12 +68,13 @@ Book.prototype.displayInfo = function () {
   newDiv.appendChild(authorInfo).classList.add('newBook');
   newDiv.appendChild(pagesInfo).classList.add('newBook');
   newDiv.appendChild(genreInfo).classList.add('newBook');
-  newDiv.appendChild(readStatus);
-  newDiv.appendChild(removeBook);
-  readStatus.setAttribute("class", 'removeButton');
+  newDiv.appendChild(removeBook).classList.add('removeButton');
+  newDiv.appendChild(readStatus).classList.add('removeButton');
   readStatus.setAttribute("id", 'readStatus');
-  removeBook.setAttribute("class", 'removeButton');
   removeBook.setAttribute("id", `${this.id}`);
+  if(this.read === 'Have Not Read'){
+    newDiv.setAttribute('class', 'haveNotRead')
+  }
   
   titleInfo.textContent = `${this.title}`;
   authorInfo.textContent = `Author: ${this.author}`;
@@ -76,17 +89,22 @@ Book.prototype.displayInfo = function () {
     console.log(myLibrary);
     let removedElement = document.getElementById(`${this.id}`);
     removedElement.remove();
+    storeLibrary();
   })
 
   readStatus.addEventListener('click', () =>{
     if(this.read === 'Have Not Read'){
       this.read = 'Have Read';
       readStatus.textContent = this.read;
+      newDiv.setAttribute('class', 'book');
     } else if (this.read === 'Have Read'){
       this.read = 'Have Not Read';
       readStatus.textContent = this.read;
+      newDiv.setAttribute('class', 'haveNotRead')
     }
+    storeLibrary();
   })
+  storeLibrary();
 }
 
 span.onclick = function() {
@@ -95,3 +113,4 @@ span.onclick = function() {
 
 saveBook.addEventListener('click', addBookToLibrary);
 addBookButton.addEventListener('click', bookInfoCheck);
+console.log(localStorage);
