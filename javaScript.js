@@ -4,24 +4,33 @@ let span = document.getElementsByClassName("close")[0];
 let saveBook = document.getElementById('saveBookInfo');
 let bookContainer = document.getElementById('book-container');
 let myLibrary = [];
+let index = 0;
 window.localStorage;
 //localStorage.clear();
 
 window.onload = function () {
-  let storedLibrary = JSON.parse(localStorage.getItem('book', myLibrary));
+  let storedLibrary = JSON.parse(localStorage.getItem('savedBook', myLibrary));
   if(storedLibrary === null){
     myLibrary = [];
     return;
   }
   myLibrary = storedLibrary;
   myLibrary.forEach(function (){
-  Book.prototype.displayInfo();
+    let title = storedLibrary[index].title;
+    let author = storedLibrary[index].author;
+    let pages = storedLibrary[index].pages;
+    let read = storedLibrary[index].read;
+    let genre = storedLibrary[index].genre;
+    let id = storedLibrary[index].id;
+    index++;
+    console.log(title);
+    Book.prototype.displayInfo(this.title);
   })
   console.log(storedLibrary)
 }
 
 function storeLibrary() {
-  localStorage.setItem('book', JSON.stringify(myLibrary));
+  localStorage.setItem('savedBook', JSON.stringify(myLibrary));
   console.log(localStorage);
 }
 
