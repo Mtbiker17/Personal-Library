@@ -5,8 +5,7 @@ let saveBook = document.getElementById('saveBookInfo');
 let bookContainer = document.getElementById('book-container');
 let myLibrary = [];
 let index = 0;
-window.localStorage;
-//localStorage.clear() 
+window.localStorage; 
 
 /* adds an example book, if user is opening application for first time
 otherwise, retrieves saved library from local storage */
