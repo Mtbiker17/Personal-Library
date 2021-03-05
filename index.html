@@ -3,7 +3,7 @@
     <head>
         <meta charset = "UTF-8">
         <title>Personal Library</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="viewport" content="width=device-width, initial-scale=0.6">
         <link rel = "stylesheet" href="style.css">
     </head>
     <body>
@@ -33,11 +33,11 @@
                     </div>
                     <div>
                         <div>Book Title</div>
-                        <input id = "bookTitle" title = "Enter Book Title">
+                        <input id = "bookTitle" class = 'bookInput' title = "Enter Book Title" autocomplete="off">
                     </div>
                     <div>
                         <div>Author</div>
-                        <input id = "bookAuthor" title="Enter Book Author">
+                        <input id = "bookAuthor" class = 'bookInput' title="Enter Book Author" autocomplete="off">
                     </div>
                     <div>
                         <label>Have You Read This Book?</label>
@@ -48,10 +48,14 @@
                     </div>
             </div>
             <div id="book-container">
-                
             </div>
-        
         </div>
+        <footer id = "footer">
+                <p id = "signature">Created by: Devin</p>
+                <a href = "">
+                <img src = "GitHub-Mark-32px.png"></a>
+        </footer>
+        
     </body>
     <script type="text/javascript" src = "javaScript.js"></script>
 </html>
