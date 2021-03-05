@@ -154,6 +154,7 @@ html {
     padding: 8px;
     color: black;
     box-sizing: border-box;
+    border-radius: 10px;
     border: none;
     font-weight: 500;
     font-size: 70%;
@@ -170,7 +171,8 @@ html {
     align-items: center;
     font-size: 70%;
     font-weight: bolder;
-    max-height: 100px;
+    overflow-wrap: break-word;
+    word-break: break-word;
 }
 
 #bookAuthor {
