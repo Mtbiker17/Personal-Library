@@ -6,9 +6,11 @@ let bookContainer = document.getElementById('book-container');
 let myLibrary = [];
 let index = 0;
 window.localStorage;
-//localStorage.clear()
+//localStorage.clear() 
 
-window.onload = function() {
+/* adds an example book, if user is opening application for first time
+otherwise, retrieves saved library from local storage */
+window.onload = function () {
   let storedLibrary = JSON.parse(localStorage.getItem('savedBook', myLibrary));
   if (storedLibrary === null) {
     myLibrary = [
@@ -25,7 +27,7 @@ window.onload = function() {
     return;
   }
   myLibrary = storedLibrary;
-  myLibrary.forEach(function() {
+  myLibrary.forEach(function () {
     this.title = storedLibrary[index].title;
     this.author = storedLibrary[index].author;
     this.pages = storedLibrary[index].pages;
@@ -33,7 +35,7 @@ window.onload = function() {
     this.genre = storedLibrary[index].genre;
     this.id = storedLibrary[index].id;
     index++;
-    let addBook = new Book(title, author, pages, read, genre, id);
+    let addBook = new Book(title, author, pages, read, genre, id)
   })
 }
 
@@ -53,10 +55,10 @@ function bookInfoCheck() {
 
 function Book(title, author, pages, read, genre, id) {
   this.title = title,
-  this.author = author,
-  this.read = read,
-  this.pages = pages,
-  this.genre = genre
+    this.author = author,
+    this.read = read,
+    this.pages = pages,
+    this.genre = genre
   this.id = id;
   this.displayInfo();
 }
@@ -76,7 +78,7 @@ function addBookToLibrary() {
   bookAuthor.value = '';
 }
 
-Book.prototype.displayInfo = function() {
+Book.prototype.displayInfo = function () {
   let newDiv = document.createElement('div');
   let titleInfo = document.createElement('div');
   let authorInfo = document.createElement('div');
@@ -106,7 +108,7 @@ Book.prototype.displayInfo = function() {
   genreInfo.textContent = `Book Genre: ${this.genre}`;
   removeBook.textContent = 'Remove Book'
   readStatus.textContent = `${this.read}`;
-  
+
   removeBook.addEventListener('click', () => {
     let removeId = parseInt(removeBook.id);
     myLibrary = myLibrary.filter(books => books.id !== removeId);
@@ -124,13 +126,13 @@ Book.prototype.displayInfo = function() {
     } else if (myLibrary[this.id].read === 'Have Read') {
       myLibrary[this.id].read = 'Have Not Read';
       readStatus.textContent = myLibrary[this.id].read;
-      newDiv.setAttribute('class', 'haveNotRead')
+      newDiv.setAttribute('class', 'haveNotRead');
     }
     storeLibrary();
   })
 }
 
-span.onclick = function() {
+span.onclick = function () {
   modal.style.display = 'none';
 }
 
