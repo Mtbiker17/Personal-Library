@@ -17,7 +17,7 @@ html {
     font-weight: 100;
 }
 
-#subTitle{
+#subTitle {
     display: flex;
     color: black;
     font-weight: 100;
@@ -27,7 +27,7 @@ html {
     margin-top: 0;
 }
 
-#shelfImg{
+#shelfImg {
     font-size: 300%
 }
 
@@ -47,7 +47,7 @@ html {
     font-size: 110%;
 }
 
-#addBookButton{
+#addBookButton {
     border: black;
     border-style: solid;
     border-width: 2px;
@@ -120,11 +120,11 @@ html {
     transform: scale(1.05);
 }
 
-.removeButton:active{
+.removeButton:active {
     transform: scale(1);
 }
 
-#book-container{
+#book-container {
     display: grid;
     grid-template-columns: auto auto auto;
     background-color: #0074d9;
@@ -133,7 +133,7 @@ html {
     justify-content: center;
 }
 
-.book{
+.book {
     display: flex;
     align-items: left;
     flex-direction: column;
@@ -179,7 +179,7 @@ html {
     background-image: url('https://img.icons8.com/ios/50/000000/hand-with-pen.png');
 }
 
-.newBook{
+.newBook {
     display: flex;
     align-items: center;
     font-family: inherit;
@@ -192,7 +192,7 @@ html {
     margin-top: auto;
 }
 
-.modal{
+.modal {
     display: none;
     position: fixed;
     z-index: 1;
@@ -203,7 +203,7 @@ html {
     background-color: rgba(0, 0, 0, 0.8); 
 }
 
-.modalContent{
+.modalContent {
     color: white;
     font-size: 125%;
     margin: auto;
@@ -232,13 +232,26 @@ html {
   font-family: 'Courier New', Courier, monospace;
   font-size: 110%;
   color: white;
-  padding: 10px;
+  margin: 0;
   position: absolute;
   bottom: 0;
   width: 100%;
   height: 2.5rem;
 }
 
-#signature {
+#footerWrap {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.sign {
     margin-right: 10px;
+    margin-bottom: 10px;
+}
+
+#signatureContainer {
+    display: flex;
+    flex-direction: row;
+    margin: 0%
 }

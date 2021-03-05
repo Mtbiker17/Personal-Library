@@ -1,62 +1,70 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset = "UTF-8">
-        <title>Personal Library</title>
-        <meta name="viewport" content="width=device-width, initial-scale=0.6">
-        <link rel = "stylesheet" href="style.css">
-    </head>
-    <body>
-        <div class = "mainContainer">
-            <div id = "header">
-                <div id = "shelfImg"><img src = "https://img.icons8.com/ios/100/000000/book-shelf.png"></div>
-                <div id = "pageTitle">Personal Library</div>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Personal Library</title>
+    <meta name="viewport" content="width=device-width, initial-scale=0.6">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="mainContainer">
+        <div id="header">
+            <div id="shelfImg"><img src="https://img.icons8.com/ios/100/000000/book-shelf.png"></div>
+            <div id="pageTitle">Personal Library</div>
+        </div>
+        <p id="subTitle">A Virtual Bookshelf Tool</p>
+        <div id="toolbarContainer">
+            <button id="addBookButton" title="Add Book">
+                <img src="https://img.icons8.com/material-outlined/24/000000/add-book.png" />
+                <div>Add</div>
+            </button>
+            <div id="bookModal" class="modal">
+                <div class="modalContent">
+                    <span class="close">&times;</span>
+                    <div>Additional Book Information</div><br>
+                    <div>Book Genre:
+                        <input id="genre" title="Enter Book Genre">
+                    </div>
+                    <div>How many pages?
+                        <input id="pages" title="Enter Number of Pages">
+                    </div><br>
+                    <button id="saveBookInfo">Add Book</button>
+                </div>
             </div>
-            <p id = "subTitle">A Virtual Bookshelf Tool</p>
-            <div id = "toolbarContainer">
-                    <button id = "addBookButton" title ="Add Book">
-                        <img src = "https://img.icons8.com/material-outlined/24/000000/add-book.png"/>
-                        <div>Add</div>
-                    </button>
-                    <div id="bookModal" class="modal">
-                        <div class="modalContent">
-                            <span class="close">&times;</span>
-                            <div>Additional Book Information</div><br>
-                            <div>Book Genre: 
-                                <input id="genre" title = "Enter Book Genre">
-                            </div>
-                            <div>How many pages?
-                                <input id="pages" title = "Enter Number of Pages">
-                            </div><br>
-                            <button id="saveBookInfo">Add Book</button>
-                        </div>
-                    </div>
-                    <div>
-                        <div>Book Title</div>
-                        <input id = "bookTitle" class = 'bookInput' title = "Enter Book Title" autocomplete="off">
-                    </div>
-                    <div>
-                        <div>Author</div>
-                        <input id = "bookAuthor" class = 'bookInput' title="Enter Book Author" autocomplete="off">
-                    </div>
-                    <div>
-                        <label>Have You Read This Book?</label>
-                            <select id="read">
-                            <option value="Have Read">Have Read</option>
-                            <option value="Have Not Read">Have Not Read</option>
-                            </select>
-                    </div>
+            <div>
+                <div>Book Title</div>
+                <input id="bookTitle" class='bookInput' title="Enter Book Title" autocomplete="off">
             </div>
-            <div id="book-container">
+            <div>
+                <div>Author</div>
+                <input id="bookAuthor" class='bookInput' title="Enter Book Author" autocomplete="off">
+            </div>
+            <div>
+                <label>Have You Read This Book?</label>
+                <select id="read">
+                    <option value="Have Read">Have Read</option>
+                    <option value="Have Not Read">Have Not Read</option>
+                </select>
             </div>
         </div>
-        <footer id = "footer">
-                <p id = "signature">Created by: Devin</p>
-                <a href = "https://github.com/Mtbiker17/Personal-Library">
-                <img src = "GitHub-Mark-32px.png"></a>
-        </footer>
-        
-    </body>
-    <script type="text/javascript" src = "javaScript.js"></script>
-</html>
+        <div id="book-container">
+        </div>
+    </div>
+    <footer id="footer">
+        <div id='footerWrap'>
+            <div id="signatureContainer">
+                <div class='sign'>Created by: Devin</div>
+                <a href="https://github.com/Mtbiker17/Personal-Library">
+                    <img src="GitHub-Mark-32px.png"></a>
+            </div>
+            <div>
+                <div class='sign'>Icons By: <a href="https://icons8.com/icons/set/icon-8">Icons8</a></div>
+            </div>
+        </div>
+    </footer>
+</body>
+<script type="text/javascript" src="javaScript.js"></script>
 
+</html>
