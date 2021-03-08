@@ -146,9 +146,9 @@ body {
     display: flex;
     align-items: left;
     flex-direction: column;
-    box-shadow: 8px 5px 5px black;
+    box-shadow: 8px 5px 0px black;
     border-width: 2px;
-    background: #f89b49;
+    background: #00DBAF;
     height: 300px;
     width: 275px;
     padding: 20px;
@@ -207,8 +207,8 @@ body {
     z-index: 1;
     margin-top: 10%;
     margin-left: 10%;
-    width: 40%; 
-    height: 30%; 
+    width: auto; 
+    height: auto; 
     background-color: rgba(0, 0, 0, 0.8); 
 }
 
