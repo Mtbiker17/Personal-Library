@@ -4,12 +4,12 @@ let span = document.getElementsByClassName('close')[0];
 let saveBook = document.getElementById('saveBookInfo');
 let bookContainer = document.getElementById('book-container');
 let myLibrary = [];
-let index = 0;
-window.localStorage; 
+window.localStorage;
 
-/* adds an example book, if user is opening application for first time
-otherwise, retrieves saved library from local storage */
-window.onload = function () {
+/*adds an example book, if user is opening application for first time
+otherwise, retrieves saved library from local storage*/
+window.addEventListener("load", () => {
+  console.log(localStorage)
   let storedLibrary = JSON.parse(localStorage.getItem('savedBook', myLibrary));
   if (storedLibrary === null) {
     myLibrary = [
@@ -25,6 +25,7 @@ window.onload = function () {
     storeLibrary();
     return;
   }
+  let index = 0;
   myLibrary = storedLibrary;
   myLibrary.forEach(function () {
     this.title = storedLibrary[index].title;
@@ -35,8 +36,9 @@ window.onload = function () {
     this.id = storedLibrary[index].id;
     index++;
     let addBook = new Book(title, author, pages, read, genre, id)
+    console.log(myLibrary)
   })
-}
+})
 
 function storeLibrary() {
   localStorage.setItem('savedBook', JSON.stringify(myLibrary));
@@ -58,7 +60,8 @@ function Book(title, author, pages, read, genre, id) {
     this.read = read,
     this.pages = pages,
     this.genre = genre
-  this.id = id;
+    this.id = id;
+    console.log(this.id);
   this.displayInfo();
 }
 
@@ -72,6 +75,7 @@ function addBookToLibrary() {
   let addBook = new Book(title, author, pages, read, genre, id);
   myLibrary.push(addBook);
   storeLibrary();
+  console.log(localStorage)
   modal.style.display = 'none';
   bookTitle.value = '';
   bookAuthor.value = '';
@@ -115,16 +119,17 @@ Book.prototype.displayInfo = function () {
     removedElement.remove();
     storeLibrary();
     console.log(myLibrary);
+    console.log(localStorage)
   })
 
   readStatus.addEventListener('click', () => {
-    if (myLibrary[this.id].read === 'Have Not Read') {
-      myLibrary[this.id].read = 'Have Read';
-      readStatus.textContent = myLibrary[this.id].read;
+    if (this.read === 'Have Not Read') {
+      this.read = 'Have Read';
+      readStatus.textContent = this.read;
       newDiv.setAttribute('class', 'book');
-    } else if (myLibrary[this.id].read === 'Have Read') {
-      myLibrary[this.id].read = 'Have Not Read';
-      readStatus.textContent = myLibrary[this.id].read;
+    } else if (this.read === 'Have Read') {
+      this.read = 'Have Not Read';
+      readStatus.textContent = this.read;
       newDiv.setAttribute('class', 'haveNotRead');
     }
     storeLibrary();
