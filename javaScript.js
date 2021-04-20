@@ -9,7 +9,6 @@ window.localStorage;
 /*adds an example book, if user is opening application for first time
 otherwise, retrieves saved library from local storage*/
 window.addEventListener("load", () => {
-  console.log(localStorage)
   let storedLibrary = JSON.parse(localStorage.getItem('savedBook', myLibrary));
   if (storedLibrary === null) {
     myLibrary = [
@@ -36,7 +35,6 @@ window.addEventListener("load", () => {
     this.id = storedLibrary[index].id;
     index++;
     let addBook = new Book(title, author, pages, read, genre, id)
-    console.log(myLibrary)
   })
 })
 
@@ -54,15 +52,69 @@ function bookInfoCheck() {
   modal.style.display = 'block';
 }
 
-function Book(title, author, pages, read, genre, id) {
-  this.title = title,
+class Book {
+  constructor(title, author, pages, read, genre, id) {
+    this.title = title,
     this.author = author,
     this.read = read,
     this.pages = pages,
-    this.genre = genre
+    this.genre = genre;
     this.id = id;
-    console.log(this.id);
-  this.displayInfo();
+    this.displayInfo();
+  }
+  
+  displayInfo() {
+    let newDiv = document.createElement('div');
+    let titleInfo = document.createElement('div');
+    let authorInfo = document.createElement('div');
+    let pagesInfo = document.createElement('div');
+    let genreInfo = document.createElement('div');
+    let removeBook = document.createElement('button');
+    let readStatus = document.createElement('button');
+    bookContainer.append(newDiv);
+    newDiv.classList.add('book');
+    newDiv.setAttribute('id', `${this.id}`);
+
+    newDiv.appendChild(titleInfo).classList.add('bookTitle');
+    newDiv.appendChild(authorInfo).classList.add('newBook');
+    newDiv.appendChild(pagesInfo).classList.add('newBook');
+    newDiv.appendChild(genreInfo).classList.add('newBook');
+    newDiv.appendChild(removeBook).classList.add('removeButton');
+    newDiv.appendChild(readStatus).classList.add('removeButton');
+    readStatus.setAttribute('id', 'readStatus');
+    removeBook.setAttribute('id', `${this.id}`);
+    if (this.read === 'Have Not Read') {
+      newDiv.setAttribute('class', 'haveNotRead');
+    }
+
+    titleInfo.textContent = `${this.title}`;
+    authorInfo.textContent = `Author: ${this.author}`;
+    pagesInfo.textContent = `# of Pages: ${this.pages}`;
+    genreInfo.textContent = `Book Genre: ${this.genre}`;
+    removeBook.textContent = 'Remove Book';
+    readStatus.textContent = `${this.read}`;
+
+    removeBook.addEventListener('click', () => {
+      let removeId = parseInt(removeBook.id);
+      myLibrary = myLibrary.filter(books => books.id !== removeId);
+      let removedElement = document.getElementById(`${this.id}`);
+      removedElement.remove();
+      storeLibrary();
+    });
+
+    readStatus.addEventListener('click', () => {
+      if (this.read === 'Have Not Read') {
+        this.read = 'Have Read';
+        readStatus.textContent = this.read;
+        newDiv.setAttribute('class', 'book');
+      } else if (this.read === 'Have Read') {
+        this.read = 'Have Not Read';
+        readStatus.textContent = this.read;
+        newDiv.setAttribute('class', 'haveNotRead');
+      }
+      storeLibrary();
+    });
+  }
 }
 
 function addBookToLibrary() {
@@ -75,66 +127,11 @@ function addBookToLibrary() {
   let addBook = new Book(title, author, pages, read, genre, id);
   myLibrary.push(addBook);
   storeLibrary();
-  console.log(localStorage)
   modal.style.display = 'none';
   bookTitle.value = '';
   bookAuthor.value = '';
 }
 
-Book.prototype.displayInfo = function () {
-  let newDiv = document.createElement('div');
-  let titleInfo = document.createElement('div');
-  let authorInfo = document.createElement('div');
-  let pagesInfo = document.createElement('div');
-  let genreInfo = document.createElement('div');
-  let removeBook = document.createElement('button');
-  let readStatus = document.createElement('button');
-  bookContainer.append(newDiv);
-  newDiv.classList.add('book');
-  newDiv.setAttribute('id', `${this.id}`);
-
-  newDiv.appendChild(titleInfo).classList.add('bookTitle');
-  newDiv.appendChild(authorInfo).classList.add('newBook');
-  newDiv.appendChild(pagesInfo).classList.add('newBook');
-  newDiv.appendChild(genreInfo).classList.add('newBook');
-  newDiv.appendChild(removeBook).classList.add('removeButton');
-  newDiv.appendChild(readStatus).classList.add('removeButton');
-  readStatus.setAttribute('id', 'readStatus');
-  removeBook.setAttribute('id', `${this.id}`);
-  if (this.read === 'Have Not Read') {
-    newDiv.setAttribute('class', 'haveNotRead')
-  }
-
-  titleInfo.textContent = `${this.title}`;
-  authorInfo.textContent = `Author: ${this.author}`;
-  pagesInfo.textContent = `# of Pages: ${this.pages}`;
-  genreInfo.textContent = `Book Genre: ${this.genre}`;
-  removeBook.textContent = 'Remove Book'
-  readStatus.textContent = `${this.read}`;
-
-  removeBook.addEventListener('click', () => {
-    let removeId = parseInt(removeBook.id);
-    myLibrary = myLibrary.filter(books => books.id !== removeId);
-    let removedElement = document.getElementById(`${this.id}`);
-    removedElement.remove();
-    storeLibrary();
-    console.log(myLibrary);
-    console.log(localStorage)
-  })
-
-  readStatus.addEventListener('click', () => {
-    if (this.read === 'Have Not Read') {
-      this.read = 'Have Read';
-      readStatus.textContent = this.read;
-      newDiv.setAttribute('class', 'book');
-    } else if (this.read === 'Have Read') {
-      this.read = 'Have Not Read';
-      readStatus.textContent = this.read;
-      newDiv.setAttribute('class', 'haveNotRead');
-    }
-    storeLibrary();
-  })
-}
 
 span.onclick = function () {
   modal.style.display = 'none';
